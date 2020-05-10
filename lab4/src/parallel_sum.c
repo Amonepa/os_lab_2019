@@ -13,7 +13,7 @@ struct SumArgs {
 };
 
 int part = 0;
-  uint32_t threads_num = -1;
+  uint32_t threads_num = -1; 
   uint32_t array_size = -1;
 
   int gran = 0;
@@ -49,13 +49,6 @@ void *ThreadSum(void *args) {
 }
 
 int main(int argc, char **argv) {
-  /*
-   *  TODO:
-   *  threads_num by command line arguments
-   *  array_size by command line arguments
-   *	seed by command line arguments
-   */
-
 
   uint32_t seed = -1;
   uint32_t i;
@@ -78,7 +71,7 @@ int main(int argc, char **argv) {
         switch (option_index) {
           case 0:
             seed = atoi(optarg);
-            // your code here
+            
             if (seed <= 0) {
             printf("seed is a positive number\n");
             return 1;
@@ -86,7 +79,7 @@ int main(int argc, char **argv) {
             break;
           case 1:
             array_size = atoi(optarg);
-            // your code here
+       
             if (array_size <= 0) {
             printf("array_size is a positive number\n");
             return 1;
@@ -94,7 +87,7 @@ int main(int argc, char **argv) {
             break;
           case 2:
             threads_num = atoi(optarg);
-            // your code here
+          
             if (threads_num < 1) {
             printf("at least 1 thread should be started\n");
             return 1;
@@ -122,15 +115,10 @@ int main(int argc, char **argv) {
   }
 
   pthread_t threads[threads_num];
-  /*
-   * TODO:
-   * your code here
-   * Generate array here
-   */
-
+  
   int *array = malloc(sizeof(int) * array_size);
     
-  //GenerateArray(array, array_size, seed);
+
   srand(seed);
 	 i = 0;
 	while (i < array_size) {
@@ -138,7 +126,7 @@ int main(int argc, char **argv) {
 		i++;
   	}
 
-printf("!!\n");
+
   i = 0;
   for (; i< array_size; i++) {
       printf("%d ", array[i]);
